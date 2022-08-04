@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class WebScraper {
     private final WebClient webClient = new WebClient();
-    private HtmlPage page;
+    private final HtmlPage page;
 
     public WebScraper(String url) {
         try {
-            page = getWebPage(url);
+            this.page = getWebPage(url);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
