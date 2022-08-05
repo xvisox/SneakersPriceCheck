@@ -25,34 +25,40 @@ public class MessageListener extends ListenerAdapter {
         if (event.isWebhookMessage()) return;
 
         String[] messageSent = event.getMessage().getContentRaw().split(" ");
-        int size = messageSent.length;
-        if (size < 1 || messageSent[0].charAt(0) != '.') return;
+        int length = messageSent.length;
+        if (length < 1 || messageSent[0].charAt(0) != '.') return;
 
         String command = messageSent[0];
         WebhookMessageBuilder messBuilder = new WebhookMessageBuilder()
                 .setUsername(Config.NAME)
                 .setAvatarUrl(Config.AVATAR);
-        if (lowestAskCommand(size, command)) {
+        if (lowestAskCommand(length, command)) {
             if (!StringUtils.isNumeric(messageSent[1])) return;
 
             int price = Integer.parseInt(messageSent[1]);
             String newPrice = df.format(getExchangeRateGBPtoPLN() * calculatePirce(price, Currency.GBP));
             sendEmbed(messBuilder, EmbedFactory.lowestAskEmbed(newPrice));
-        } else if (allLowestAskCommand(size, command)) {
+        } else if (allLowestAskCommand(length, command)) {
             String url = messageSent[1];
+            String size = null;
+            if (url.indexOf('?') != -1) {
+                size = url.substring(url.indexOf('?') + 6).replaceAll("W", "");
+                url = url.substring(0, url.indexOf('?'));
+            }
+
             AllOffers allOffers = new AllOffers(url);
-            sendEmbed(messBuilder, EmbedFactory.allLowestAskOffersEmbed(allOffers));
+            sendEmbed(messBuilder, EmbedFactory.allLowestAskOffersEmbed(allOffers, size));
         } else {
             sendEmbed(messBuilder, EmbedFactory.wrongCommandEmbed());
         }
     }
 
-    private boolean allLowestAskCommand(int size, String command) {
-        return command.equalsIgnoreCase(ALL_LOWEST_COMMAND) && size == 2;
+    private boolean allLowestAskCommand(int length, String command) {
+        return command.equalsIgnoreCase(ALL_LOWEST_COMMAND) && length == 2;
     }
 
-    private boolean lowestAskCommand(int size, String command) {
-        return command.equalsIgnoreCase(LOWEST_COMMAND) && size == 2;
+    private boolean lowestAskCommand(int length, String command) {
+        return command.equalsIgnoreCase(LOWEST_COMMAND) && length == 2;
     }
 
     private void sendEmbed(WebhookMessageBuilder builder, WebhookEmbed embed) {

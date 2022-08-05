@@ -28,17 +28,25 @@ public abstract class EmbedFactory {
                 .build();
     }
 
-    public static WebhookEmbed allLowestAskOffersEmbed(AllOffers allOffers) {
+    public static WebhookEmbed allLowestAskOffersEmbed(AllOffers allOffers, String size) {
         ArrayList<Offer> offers = allOffers.getLowestAsksOffers();
         WebhookEmbedBuilder builder = new WebhookEmbedBuilder();
         builder.setColor(0x00FFFF);
         builder.setTitle(new WebhookEmbed.EmbedTitle(allOffers.getName(), allOffers.getUrl()));
 
+        String formattedPrice, formattedSize;
         for (var offer : offers) {
             double price = calculatePirce(Integer.parseInt(offer.getPrice()), Currency.USD) * getExchangeRateUSDtoPLN();
-            WebhookEmbed.EmbedField field = new WebhookEmbed.EmbedField(true, offer.getSize(), df.format(price));
-            builder.addField(field);
+            formattedPrice = formatPrice(size, offer, df.format(price));
+            formattedSize = offer.getSize();
+            builder.addField(new WebhookEmbed.EmbedField(true, formattedSize, formattedPrice));
         }
         return builder.build();
+    }
+
+    private static String formatPrice(String size, Offer offer, String price) {
+        return size != null && size.equals(offer.getSize()) ?
+                "```**" + price + "**```" :
+                "```" + price + "```";
     }
 }
