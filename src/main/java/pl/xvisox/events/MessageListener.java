@@ -36,7 +36,7 @@ public class MessageListener extends ListenerAdapter {
             if (!StringUtils.isNumeric(messageSent[1])) return;
 
             int price = Integer.parseInt(messageSent[1]);
-            String newPrice = df.format(getExchangeRateGBPtoPLN() * calculatePirce(price, Currency.GBP));
+            String newPrice = df.format(getExchangeRateGBPtoPLN() * calculatePrice(price, Currency.GBP));
             sendEmbed(messBuilder, EmbedFactory.lowestAskEmbed(newPrice));
         } else if (allLowestAskCommand(length, command)) {
             String url = messageSent[1];

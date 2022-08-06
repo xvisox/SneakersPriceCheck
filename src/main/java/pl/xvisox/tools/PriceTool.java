@@ -12,7 +12,7 @@ public abstract class PriceTool {
     private static double exchangeRateGBPtoPLN = -1;
     private static double exchangeRateUSDtoPLN = -1;
 
-    public static int calculatePirce(int currentPrice, Currency currency) {
+    public static int calculatePrice(int currentPrice, Currency currency) {
         double SHIPPING = currency == Currency.GBP ? SHIPPING_GBP : SHIPPING_USD;
         return (int) ((currentPrice / 1.05) * 0.88 - SHIPPING);
     }

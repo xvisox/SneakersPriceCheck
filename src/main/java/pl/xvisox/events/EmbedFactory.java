@@ -32,14 +32,18 @@ public abstract class EmbedFactory {
         ArrayList<Offer> offers = allOffers.getLowestAsksOffers();
         WebhookEmbedBuilder builder = new WebhookEmbedBuilder();
         builder.setColor(0x00FFFF);
-        builder.setTitle(new WebhookEmbed.EmbedTitle(allOffers.getName(), allOffers.getUrl()));
+        builder.setTitle(new WebhookEmbed.EmbedTitle(allOffers.getTitle(), allOffers.getUrl()));
 
         String formattedPrice, formattedSize;
         for (var offer : offers) {
-            double price = calculatePirce(Integer.parseInt(offer.getPrice()), Currency.USD) * getExchangeRateUSDtoPLN();
+            double price = calculatePrice(Integer.parseInt(offer.getPrice()), Currency.USD) * getExchangeRateUSDtoPLN();
             formattedPrice = formatPrice(size, offer, df.format(price));
             formattedSize = offer.getSize();
             builder.addField(new WebhookEmbed.EmbedField(true, formattedSize, formattedPrice));
+            if (offer.getSize().equals(size)) {
+                String profit = "Potential profit for your size: " + getProfit(offer, allOffers.getRetail());
+                builder.setFooter(new WebhookEmbed.EmbedFooter(profit, null));
+            }
         }
         return builder.build();
     }
@@ -48,5 +52,10 @@ public abstract class EmbedFactory {
         return size != null && size.equals(offer.getSize()) ?
                 "```**" + price + "**```" :
                 "```" + price + "```";
+    }
+
+    private static String getProfit(Offer chosenOffer, String retail) {
+        double profit = calculatePrice(Integer.parseInt(chosenOffer.getPrice()), Currency.USD) - Integer.parseInt(retail);
+        return df.format(profit * getExchangeRateUSDtoPLN());
     }
 }

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86c9cc4c-ff20-4e85-b0e2-b86b7b753d93" name="Changes" comment="converting every ask to pln from given url">
+    <list default="true" id="86c9cc4c-ff20-4e85-b0e2-b86b7b753d93" name="Changes" comment="highlighting selected size from stockx url">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/DiscordBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/DiscordBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +31,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2Cte7t7tNM8bAnTZdKAIUG3ulk6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -41,7 +46,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>
   <component name="RunManager">
@@ -69,7 +75,8 @@
       <updated>1659626143152</updated>
       <workItem from="1659626144528" duration="11257000" />
       <workItem from="1659693678969" duration="12543000" />
-      <workItem from="1659716699260" duration="3404000" />
+      <workItem from="1659716699260" duration="3810000" />
+      <workItem from="1659794176470" duration="2916000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1659626469180</created>
@@ -92,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659705321374</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="highlighting selected size from stockx url">
+      <created>1659720185509</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1659720185509</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +127,11 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="added webhooks for lowest ask price" />
     <MESSAGE value="converting every ask to pln from given url" />
-    <option name="LAST_COMMIT_MESSAGE" value="converting every ask to pln from given url" />
+    <MESSAGE value="highlighting selected size from stockx url" />
+    <option name="LAST_COMMIT_MESSAGE" value="highlighting selected size from stockx url" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
