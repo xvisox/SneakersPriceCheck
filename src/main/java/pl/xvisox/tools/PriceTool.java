@@ -10,6 +10,7 @@ public abstract class PriceTool {
     private static final double SHIPPING_GBP = 4.2;
     private static final double SHIPPING_USD = 5.2;
     private static double exchangeRateGBPtoPLN = -1;
+    private static double exchangeRateEURtoPLN = -1;
     private static double exchangeRateUSDtoPLN = -1;
 
     public static int calculatePrice(int currentPrice, Currency currency) {
@@ -31,6 +32,14 @@ public abstract class PriceTool {
         }
         String averageExchangeRate = scrapeExchangeRateFromPage("https://www.walutomat.pl/kursy-walut/usd-pln/");
         return (exchangeRateUSDtoPLN = Double.parseDouble(averageExchangeRate.replace(',', '.')));
+    }
+
+    public static double getExchangeRateEURtoPLN() {
+        if (exchangeRateEURtoPLN > 0) {
+            return exchangeRateEURtoPLN;
+        }
+        String averageExchangeRate = scrapeExchangeRateFromPage("https://www.walutomat.pl/kursy-walut/eur-pln/");
+        return (exchangeRateEURtoPLN = Double.parseDouble(averageExchangeRate.replace(',', '.')));
     }
 
     private static String scrapeExchangeRateFromPage(String url) {

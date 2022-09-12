@@ -2,7 +2,8 @@ package pl.xvisox.events;
 
 import club.minnced.discord.webhook.send.WebhookEmbed;
 import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
-import pl.xvisox.tools.AllOffers;
+import pl.xvisox.tools.KlektOffers;
+import pl.xvisox.tools.StockXOffers;
 import pl.xvisox.tools.Currency;
 import pl.xvisox.tools.Offer;
 
@@ -28,11 +29,11 @@ public abstract class EmbedFactory {
                 .build();
     }
 
-    public static WebhookEmbed allLowestAskOffersEmbed(AllOffers allOffers, String size) {
-        ArrayList<Offer> offers = allOffers.getLowestAsksOffers();
+    public static WebhookEmbed allStockXOffersEmbed(StockXOffers stockXOffers, String size) {
+        ArrayList<Offer> offers = stockXOffers.getLowestAsksOffers();
         WebhookEmbedBuilder builder = new WebhookEmbedBuilder();
         builder.setColor(0x00FFFF);
-        builder.setTitle(new WebhookEmbed.EmbedTitle(allOffers.getTitle(), allOffers.getUrl()));
+        builder.setTitle(new WebhookEmbed.EmbedTitle(stockXOffers.getTitle(), stockXOffers.getUrl()));
 
         String formattedPrice, formattedSize;
         for (var offer : offers) {
@@ -41,9 +42,25 @@ public abstract class EmbedFactory {
             formattedSize = offer.getSize();
             builder.addField(new WebhookEmbed.EmbedField(true, formattedSize, formattedPrice));
             if (offer.getSize().equals(size)) {
-                String profit = "Potential profit for your size: " + getProfit(offer, allOffers.getRetail());
+                String profit = "Potential profit for your size: " + getProfit(offer, stockXOffers.getRetail());
                 builder.setFooter(new WebhookEmbed.EmbedFooter(profit, null));
             }
+        }
+        return builder.build();
+    }
+
+    public static WebhookEmbed allKlektOffersEmbed(KlektOffers klektOffers) {
+        ArrayList<Offer> offers = klektOffers.getLowestAskOffers();
+        WebhookEmbedBuilder builder = new WebhookEmbedBuilder();
+        builder.setColor(0x00FFFF);
+        builder.setTitle(new WebhookEmbed.EmbedTitle(klektOffers.getTitle(), klektOffers.getUrl()));
+
+        String formattedPrice, formattedSize;
+        for (var offer : offers) {
+            double price = Integer.parseInt(offer.getPrice()) / 1.17 * getExchangeRateEURtoPLN();
+            formattedPrice = formatPrice(null, offer, df.format(price));
+            formattedSize = offer.getSize();
+            builder.addField(new WebhookEmbed.EmbedField(true, formattedSize, formattedPrice));
         }
         return builder.build();
     }

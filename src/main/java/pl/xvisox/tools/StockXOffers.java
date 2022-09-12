@@ -5,12 +5,12 @@ import pl.xvisox.web.WebScraper;
 
 import java.util.ArrayList;
 
-public class AllOffers {
+public class StockXOffers {
     private final String url;
     private String retail;
     private String title;
 
-    public AllOffers(String url) {
+    public StockXOffers(String url) {
         this.url = url;
     }
 

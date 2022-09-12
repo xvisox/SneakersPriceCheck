@@ -6,14 +6,16 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.apache.commons.lang3.StringUtils;
 import pl.xvisox.Config;
-import pl.xvisox.tools.AllOffers;
+import pl.xvisox.tools.KlektOffers;
+import pl.xvisox.tools.StockXOffers;
 import pl.xvisox.tools.Currency;
 
 import static pl.xvisox.tools.PriceTool.*;
 
 public class MessageListener extends ListenerAdapter {
     private static final String LOWEST_COMMAND = ".low";
-    private static final String ALL_LOWEST_COMMAND = ".all";
+    private static final String STOCKX_COMMAND = ".sx";
+    private static final String KLEKT_COMMAND = ".kl";
     private final Webhook webhook;
 
     public MessageListener(Webhook webhook) {
@@ -38,7 +40,7 @@ public class MessageListener extends ListenerAdapter {
             int price = Integer.parseInt(messageSent[1]);
             String newPrice = df.format(getExchangeRateGBPtoPLN() * calculatePrice(price, Currency.GBP));
             sendEmbed(messBuilder, EmbedFactory.lowestAskEmbed(newPrice));
-        } else if (allLowestAskCommand(length, command)) {
+        } else if (allStockXCommand(length, command)) {
             String url = messageSent[1];
             String size = null;
             if (url.indexOf('?') != -1) {
@@ -46,15 +48,24 @@ public class MessageListener extends ListenerAdapter {
                 url = url.substring(0, url.indexOf('?'));
             }
 
-            AllOffers allOffers = new AllOffers(url);
-            sendEmbed(messBuilder, EmbedFactory.allLowestAskOffersEmbed(allOffers, size));
+            StockXOffers stockXOffers = new StockXOffers(url);
+            sendEmbed(messBuilder, EmbedFactory.allStockXOffersEmbed(stockXOffers, size));
+        } else if (allKlektCommand(length, command)) {
+            String url = messageSent[1];
+
+            KlektOffers klektOffers = new KlektOffers(url);
+            sendEmbed(messBuilder, EmbedFactory.allKlektOffersEmbed(klektOffers));
         } else {
             sendEmbed(messBuilder, EmbedFactory.wrongCommandEmbed());
         }
     }
 
-    private boolean allLowestAskCommand(int length, String command) {
-        return command.equalsIgnoreCase(ALL_LOWEST_COMMAND) && length == 2;
+    private boolean allStockXCommand(int length, String command) {
+        return command.equalsIgnoreCase(STOCKX_COMMAND) && length == 2;
+    }
+
+    private boolean allKlektCommand(int length, String command) {
+        return command.equalsIgnoreCase(KLEKT_COMMAND) && length == 2;
     }
 
     private boolean lowestAskCommand(int length, String command) {

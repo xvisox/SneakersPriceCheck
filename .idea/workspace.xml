@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86c9cc4c-ff20-4e85-b0e2-b86b7b753d93" name="Changes" comment="highlighting selected size from stockx url">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/KlektOffers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/DiscordBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/DiscordBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/StockXOffers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -40,20 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DiscordBot" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.xvisox.DiscordBot" />
-      <module name="StockXPriceCheck" />
+      <module name="StockXPrice" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pl.xvisox.*" />
@@ -77,6 +78,7 @@
       <workItem from="1659693678969" duration="12543000" />
       <workItem from="1659716699260" duration="3810000" />
       <workItem from="1659794176470" duration="2916000" />
+      <workItem from="1660064874344" duration="7770000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1659626469180</created>
