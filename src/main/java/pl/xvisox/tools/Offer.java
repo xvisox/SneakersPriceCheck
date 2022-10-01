@@ -1,6 +1,8 @@
 package pl.xvisox.tools;
 
-public class Offer {
+import org.jetbrains.annotations.NotNull;
+
+public class Offer implements Comparable<Offer> {
     private final String price;
     private final String size;
 
@@ -20,5 +22,10 @@ public class Offer {
     @Override
     public String toString() {
         return "Offer{" + "price='" + price + '\'' + ", size='" + size + '\'' + '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Offer o) {
+        return o.getSize().compareTo(this.getSize());
     }
 }

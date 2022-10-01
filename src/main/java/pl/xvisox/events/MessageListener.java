@@ -13,9 +13,10 @@ import pl.xvisox.tools.Currency;
 import static pl.xvisox.tools.PriceTool.*;
 
 public class MessageListener extends ListenerAdapter {
-    private static final String LOWEST_COMMAND = ".low";
-    private static final String STOCKX_COMMAND = ".sx";
-    private static final String KLEKT_COMMAND = ".kl";
+    public static final String LOWEST_COMMAND = ".low";
+    public static final String STOCKX_COMMAND = ".stockx";
+    public static final String KLEKT_COMMAND = ".klekt";
+    public static final String HELP_COMMAND = ".help";
     private final Webhook webhook;
 
     public MessageListener(Webhook webhook) {
@@ -55,6 +56,8 @@ public class MessageListener extends ListenerAdapter {
 
             KlektOffers klektOffers = new KlektOffers(url);
             sendEmbed(messBuilder, EmbedFactory.allKlektOffersEmbed(klektOffers));
+        } else if (helpCommand(length, command)) {
+            sendEmbed(messBuilder, EmbedFactory.helpEmbed());
         } else {
             sendEmbed(messBuilder, EmbedFactory.wrongCommandEmbed());
         }
@@ -70,6 +73,10 @@ public class MessageListener extends ListenerAdapter {
 
     private boolean lowestAskCommand(int length, String command) {
         return command.equalsIgnoreCase(LOWEST_COMMAND) && length == 2;
+    }
+
+    private boolean helpCommand(int length, String command) {
+        return command.equalsIgnoreCase(HELP_COMMAND) && length == 1;
     }
 
     private void sendEmbed(WebhookMessageBuilder builder, WebhookEmbed embed) {

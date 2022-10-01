@@ -65,6 +65,24 @@ public abstract class EmbedFactory {
         return builder.build();
     }
 
+    public static WebhookEmbed helpEmbed() {
+        WebhookEmbedBuilder builder = new WebhookEmbedBuilder();
+        builder.setColor(0x00FFFF);
+        builder.setTitle(new WebhookEmbed.EmbedTitle("All available commands", null));
+
+        String low, stockx, klekt, help;
+        low = "converts lowest ask to PLN";
+        stockx = "converts all lowest asks from given stockx url to PLN";
+        klekt = "converts all lowest asks from given klekt url to PLN";
+        help = "shows this help message";
+
+        builder.addField(new WebhookEmbed.EmbedField(false, MessageListener.LOWEST_COMMAND, low));
+        builder.addField(new WebhookEmbed.EmbedField(false, MessageListener.STOCKX_COMMAND, stockx));
+        builder.addField(new WebhookEmbed.EmbedField(false, MessageListener.KLEKT_COMMAND, klekt));
+        builder.addField(new WebhookEmbed.EmbedField(false, MessageListener.HELP_COMMAND, help));
+        return builder.build();
+    }
+
     private static String formatPrice(String size, Offer offer, String price) {
         return size != null && size.equals(offer.getSize()) ?
                 "```**" + price + "**```" :

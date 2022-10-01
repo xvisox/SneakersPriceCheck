@@ -4,6 +4,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import pl.xvisox.web.WebScraper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class KlektOffers {
     private final String url;
@@ -43,8 +44,14 @@ public class KlektOffers {
             if (i == -1) break;
             price = pageString.substring(i, i + 15).replaceAll("[^\\d\\. ]", "");
             i = pageString.indexOf(sizePattern, i + 15);
+            if (i == -1) break;
             size = pageString.substring(i, i + 15).replaceAll("[^\\d\\. ]", "");
             offers.add(new Offer(price, size));
+        }
+        offers.sort(Collections.reverseOrder());
+        while (offers.get(0).getSize().charAt(0) == '1') {
+            offers.add(offers.get(0));
+            offers.remove(0);
         }
         return offers;
     }

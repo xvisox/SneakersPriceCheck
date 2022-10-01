@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86c9cc4c-ff20-4e85-b0e2-b86b7b753d93" name="Changes" comment="highlighting selected size from stockx url">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/KlektOffers.java" afterDir="false" />
+    <list default="true" id="86c9cc4c-ff20-4e85-b0e2-b86b7b753d93" name="Changes" comment="added klekt price checking">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/EmbedFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/events/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/AllOffers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/StockXOffers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/PriceTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/KlektOffers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/KlektOffers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/xvisox/tools/Offer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +36,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Cte7t7tNM8bAnTZdKAIUG3ulk6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,20 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/JetBrains/IdeaProjects/StockXPriceCheck",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "inlay.hints"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="DiscordBot" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.xvisox.DiscordBot" />
-      <module name="StockXPrice" />
+      <module name="StockXPriceCheck" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pl.xvisox.*" />
@@ -79,6 +84,11 @@
       <workItem from="1659716699260" duration="3810000" />
       <workItem from="1659794176470" duration="2916000" />
       <workItem from="1660064874344" duration="7770000" />
+      <workItem from="1662978487324" duration="56000" />
+      <workItem from="1663970975487" duration="395000" />
+      <workItem from="1664641719370" duration="84000" />
+      <workItem from="1664641812371" duration="973000" />
+      <workItem from="1664648669865" duration="6753000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1659626469180</created>
@@ -108,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659720185509</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added klekt price checking">
+      <created>1662978526938</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662978526938</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +147,8 @@
     <MESSAGE value="added webhooks for lowest ask price" />
     <MESSAGE value="converting every ask to pln from given url" />
     <MESSAGE value="highlighting selected size from stockx url" />
-    <option name="LAST_COMMIT_MESSAGE" value="highlighting selected size from stockx url" />
+    <MESSAGE value="added klekt price checking" />
+    <option name="LAST_COMMIT_MESSAGE" value="added klekt price checking" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
